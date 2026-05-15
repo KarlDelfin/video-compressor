@@ -38,66 +38,29 @@
 
   <p>{{ statusMessage }}</p>
 
-<div
-  v-for="(video, index) in compressedVideos"
-  :key="index"
-  style="margin-bottom:20px;border:1px solid #ccc;padding:10px;"
->
-  <h3>{{ video.fileName }}</h3>
+<div v-for="(video, index) in compressedVideos" :key="index" >
+  <div class="converted_video_info">
+    <h3>{{ video.fileName }}</h3>
+  </div>
+  <div class="converted_video_con">
+    <div>
+      <h4>MP4</h4>
+      <video :src="video.mp4" controls></video>
+      <a :href="video.mp4" :download="`${video.fileName}.mp4`">Download MP4</a>
+    </div>
 
-  <h4>MP4</h4>
+    <div>
+      <h4>WEBM</h4>
+      <video :src="video.webm" controls></video>
+      <a :href="video.webm" :download="`${video.fileName}.webm`">Download WEBM</a>
+    </div>
 
-  <video
-    :src="video.mp4"
-    controls
-    width="400"
-  ></video>
-
-  <br>
-
-  <a
-    :href="video.mp4"
-    :download="`${video.fileName}.mp4`"
-  >
-    Download MP4
-  </a>
-
-  <hr>
-
-  <h4>WEBM</h4>
-
-  <video
-    :src="video.webm"
-    controls
-    width="400"
-  ></video>
-
-  <br>
-
-  <a
-    :href="video.webm"
-    :download="`${video.fileName}.webm`"
-  >
-    Download WEBM
-  </a>
-
-  <hr>
-
-  <h4>OGG AUDIO</h4>
-
-  <audio
-    :src="video.ogg"
-    controls
-  ></audio>
-
-  <br>
-
-  <a
-    :href="video.ogg"
-    :download="`${video.fileName}.ogg`"
-  >
-    Download OGG
-  </a>
+    <div>
+      <h4>OGG AUDIO</h4>
+      <audio :src="video.ogg" controls ></audio>
+      <a :href="video.ogg" :download="`${video.fileName}.ogg`">Download OGG</a>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -344,3 +307,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  
+  .converted_video_con { display: flex; width: 100%; gap: 25px; }
+  .converted_video_con div { width: 100%; border: 1px solid #e1e1e1; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-direction: column; border-radius: 10px; gap: 20px; }
+  .converted_video_info { text-align: center; }
+</style>
