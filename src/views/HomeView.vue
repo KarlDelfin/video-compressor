@@ -309,8 +309,9 @@ export default {
 </script>
 
 <style scoped>
+  .converted_video_info { text-align: center; }
   
   .converted_video_con { display: flex; width: 100%; gap: 25px; }
   .converted_video_con div { width: 100%; border: 1px solid #e1e1e1; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-direction: column; border-radius: 10px; gap: 20px; }
-  .converted_video_info { text-align: center; }
+  .converted_video_con div video {width: 100%;}
 </style>
