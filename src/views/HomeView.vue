@@ -166,51 +166,33 @@ export default {
 
           /* MP4 */
           await this.ffmpeg.exec([
-            '-i',
-            inputFile,
-            '-vf',
-            `scale=${video.videoResolution}:-2`,
-            '-c:v',
-            'libx264',
-            '-crf',
-            '35',
-            '-preset',
-            'ultrafast',
-            '-c:a',
-            'copy',
-            '-movflags',
-            '+faststart',
+            '-i', inputFile,
+            '-vf', `scale=${video.videoResolution}:-2`,
+            '-c:v', 'libx264',
+            '-crf', '30',
+            '-preset', 'ultrafast',
+            '-c:a', 'copy',
+            '-movflags', '+faststart',
             mp4Output
           ])
 
           /* OGG */
           await this.ffmpeg.exec([
-            '-i',
-            inputFile,
-            '-vn',
-            '-acodec',
-            'libvorbis',
-            oggOutput
+            '-i', inputFile,
+            '-vn', '-acodec',
+            'libvorbis', oggOutput
           ])
 
           /* WEBM */
           await this.ffmpeg.exec([
-            '-i',
-            inputFile,
-            '-vf',
-            `scale=${video.videoResolution}:-2`,
-            '-c:v',
-            'libvpx',
-            '-crf',
-            '35',
-            '-b:v',
-            '0',
-            '-deadline',
-            'realtime',
-            '-cpu-used',
-            '8',
-            '-c:a',
-            'libvorbis',
+            '-i', inputFile,
+            '-vf', `scale=${video.videoResolution}:-2`,
+            '-c:v', 'libvpx',
+            '-crf', '30',
+            '-b:v', '0',
+            '-deadline', 'realtime',
+            '-cpu-used', '8',
+            '-c:a', 'libvorbis',
             webmOutput
           ])
 
